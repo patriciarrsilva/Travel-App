@@ -1,43 +1,35 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-    <head>
-        <meta charset="utf-8">
-        <title>Test</title>
-        <link rel="stylesheet" href="/styles/resets.css">
-        <link rel="stylesheet" href="/styles/base.css">
-        <link rel="stylesheet" href="/styles/header.css">
-        <link rel="stylesheet" href="/styles/form.css">
-        <link rel="stylesheet" href="/styles/footer.css">
-    </head>
+<html lang="en">
+  <head>
+    <title>Travel App</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#000000" />
+    <!-- TODO -->
+    <!-- <meta name="description" content="" /> -->
+  </head>
 
-    <body>
+  <body>
+    <h1>Travel Planner</h1>
 
-        <header>
-            <div class="">
-                Logo
-            </div>
-            <div class="">
-                navigation
-            </div>
-        </header>
-
-        <main>
-            <section>
-                <form class="" onsubmit="return Client.handleSubmit(event)">
-                    <input id="name" type="text" name="input" value="" onblur="onBlur()" placeholder="Name">
-                    <input type="submit" name="" value="submit" onclick="return Client.handleSubmit(event)" onsubmit="return handleSubmit(event)">
-                </form>
-            <section>
-
-            <section>
-                <strong>Form Results:</strong>
-                <div id="results"></div>
-            </section>
-        </main>
-
-        <footer>
-            <p>This is a footer</p>
-        </footer>
-
-    </body>
+    <main>
+      <article>
+        <img id="image" />
+        <div class="card-content">
+          <h2>My trip to: Paris, France</h2>
+          <p class="text-l">Departing: 02/12/2020</p>
+          <div class="buttons-container">
+            <button class="text-m button-save">save trip</button>
+            <button class="text-m button-remove">remove trip</button>
+          </div>
+          <p class="text-m">Paris, France is 220 days away</p>
+          <div class="weather-container">
+            <p class="text-m">Typical weather for then is:</p>
+            <p class="text-s">High - 46, Low - 35</p>
+            <p class="text-s">Mostly cloudy throughout the day</p>
+          </div>
+        </div>
+      </article>
+    </main>
+  </body>
 </html>

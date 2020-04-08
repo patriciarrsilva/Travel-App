@@ -1,17 +1,9 @@
-import { checkForName } from './js/nameChecker'
-import { handleSubmit } from './js/formHandler'
+import { checkForName } from './js/nameChecker';
+import { handleSubmit } from './js/formHandler';
+import './styles/style.scss';
+import img from './img/louvre.jpg';
 
-import './styles/resets.scss'
-import './styles/base.scss'
-import './styles/form.scss'
-import './styles/footer.scss'
-import './styles/header.scss'
+const imageTag = document.getElementById('image');
+imageTag.src = img;
 
-console.log(checkForName);
-
-alert("I EXIST")
-
-export {
-    checkForName,
-    handleSubmit
-}
+export { checkForName, handleSubmit };

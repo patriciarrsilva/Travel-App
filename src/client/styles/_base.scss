@@ -1,0 +1,95 @@
+$pink: pink;
+$white: white;
+$black: black;
+
+body {
+  font-size: 62.5%;
+  padding: 2rem 0;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin: 0;
+  padding: 1rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+.text-l {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0;
+  padding: 0.25rem 0;
+}
+
+.text-m {
+  font-size: 1.25rem;
+  margin: 0;
+  padding: 0.25rem 0;
+}
+
+.text-s {
+  font-size: 1rem;
+  margin: 0;
+  padding: 0.25rem 0;
+}
+
+article {
+  background-color: $pink;
+  padding: 1rem 0;
+
+  img {
+    height: 100%;
+    width: 100%;
+    padding: 1rem 0;
+  }
+
+  .card-content {
+    padding: 0 1rem;
+  }
+
+  .buttons-container {
+    display: flex;
+    padding: 1rem 0;
+  }
+
+  button {
+    cursor: pointer;
+    flex: 0 0 8rem;
+
+    &.button-save {
+      background-color: $white;
+      border: 0.25rem solid $black;
+      margin-right: 1rem;
+    }
+
+    &.button-remove {
+      background-color: transparent;
+      border: 0.25rem solid $white;
+    }
+  }
+
+  .weather-container {
+    padding: 1rem 0;
+  }
+}
+
+@media (min-width: 901px) {
+  article {
+    display: flex;
+    flex-direction: row;
+
+    img,
+    .card-content {
+      flex: 0 0 50%;
+    }
+
+    img {
+      padding: 0 1rem;
+      width: 0;
+    }
+  }
+}
