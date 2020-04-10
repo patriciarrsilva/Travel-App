@@ -1,9 +1,8 @@
-import { checkForName } from './js/nameChecker';
-import { handleSubmit } from './js/formHandler';
+import { handleSubmit } from './js/application';
 import './styles/style.scss';
-import img from './img/louvre.jpg';
+import img from './media/louvre.jpg';
 
 const imageTag = document.getElementById('image');
 imageTag.src = img;
 
-export { checkForName, handleSubmit };
+export { handleSubmit };

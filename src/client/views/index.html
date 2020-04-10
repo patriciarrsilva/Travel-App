@@ -13,10 +13,29 @@
     <h1>Travel Planner</h1>
 
     <main>
+      <form>
+        <div>
+          <p class="text-l">My trip to:</p>
+          <input
+            class="text-l input"
+            type="text"
+            placeholder="Enter a Location"
+          />
+        </div>
+        <div>
+          <p class="text-l">Departing:</p>
+          <input class="text-l input" type="date" />
+        </div>
+        <div class="buttons-container">
+          <button id="save" class="text-m button-save">save trip</button>
+          <button class="text-m button-remove">remove trip</button>
+        </div>
+      </form>
+
       <article>
         <img id="image" />
         <div class="card-content">
-          <h2>My trip to: Paris, France</h2>
+          <p class="text-l">My trip to: Paris, France</p>
           <p class="text-l">Departing: 02/12/2020</p>
           <div class="buttons-container">
             <button class="text-m button-save">save trip</button>
@@ -31,5 +50,11 @@
         </div>
       </article>
     </main>
+
+    <script>
+      document
+        .getElementById('save')
+        .addEventListener('click', Client.handleSubmit);
+    </script>
   </body>
 </html>
