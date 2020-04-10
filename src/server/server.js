@@ -46,16 +46,18 @@ app.listen(8081, function () {
 // Setup empty JS object to act as endpoint for all routes
 projectData = {};
 
-const getData = async (url) => {
-  const response = await fetch(url);
+// POST base
+app.post('/base', function (req, res) {
+  projectData.location = req.body.location;
+  projectData.dateValue = req.body.dateValue;
+  projectData.daysLeft = req.body.daysLeft;
 
-  try {
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.log('Error: ', error);
-  }
-};
+  res.send({
+    location: projectData.location,
+    dateValue: projectData.dateValue,
+    daysLeft: projectData.daysLeft,
+  });
+});
 
 // POST weatherbit
 app.post('/weatherbit', function (req, res) {
@@ -74,5 +76,10 @@ app.post('/weatherbit', function (req, res) {
 app.post('/pixabay', function (req, res) {
   projectData.imgSrc = req.body.imgSrc;
 
-  res.send(projectData.imgSrc);
+  res.send({ imgSrc: projectData.imgSrc });
+});
+
+// GET
+app.get('/all', (req, res) => {
+  res.send(projectData);
 });
