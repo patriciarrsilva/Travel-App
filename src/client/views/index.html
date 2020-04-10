@@ -17,6 +17,7 @@
         <div>
           <p class="text-l">My trip to:</p>
           <input
+            id="location"
             class="text-l input"
             type="text"
             placeholder="Enter a Location"
@@ -24,7 +25,7 @@
         </div>
         <div>
           <p class="text-l">Departing:</p>
-          <input class="text-l input" type="date" />
+          <input id="date" class="text-l input" type="date" />
         </div>
         <div class="buttons-container">
           <button id="save" class="text-m button-save">save trip</button>
@@ -33,6 +34,7 @@
       </form>
 
       <article>
+        <!-- TODO grant rights to pixabay -->
         <img id="image" />
         <div class="card-content">
           <p class="text-l">My trip to: Paris, France</p>
@@ -44,7 +46,7 @@
           <p class="text-m">Paris, France is 220 days away</p>
           <div class="weather-container">
             <p class="text-m">Typical weather for then is:</p>
-            <p class="text-s">High - 46, Low - 35</p>
+            <p class="text-s">Temperature - 46, Feels like - 35</p>
             <p class="text-s">Mostly cloudy throughout the day</p>
           </div>
         </div>
@@ -52,9 +54,11 @@
     </main>
 
     <script>
-      document
-        .getElementById('save')
-        .addEventListener('click', Client.handleSubmit);
+      document.addEventListener('DOMContentLoaded', function () {
+        document
+          .getElementById('save')
+          .addEventListener('click', Client.handleSubmit);
+      });
     </script>
   </body>
 </html>
