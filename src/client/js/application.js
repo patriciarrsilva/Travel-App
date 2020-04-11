@@ -12,24 +12,34 @@ function handleSubmit(event) {
     return;
   }
 
-  const locationQuery = location
-    .split(',')
-    .map((l) => l.trim())
-    .join('+');
+  const locationList = location.split(',').map((l) => l.trim());
+
+  const locationQuery = locationList.join('+');
 
   postData('http://localhost:8081/base', {
     location,
     dateValue,
     daysLeft,
   }).then(() => {
+    // Handle image
     getData(
       `https://pixabay.com/api/?key=15981019-602df5061e142303589608af5&q=${locationQuery}`
     ).then((data) => {
-      const imgSrc = data.hits[0].webformatURL;
-
-      postData('http://localhost:8081/pixabay', { imgSrc });
+      if (data.total === 0) {
+        const country = locationList[locationList.length - 1];
+        getData(
+          `https://pixabay.com/api/?key=15981019-602df5061e142303589608af5&q=${country}`
+        ).then((data) => {
+          const imgSrc = data.hits[0].webformatURL;
+          postData('http://localhost:8081/pixabay', { imgSrc });
+        });
+      } else {
+        const imgSrc = data.hits[0].webformatURL;
+        postData('http://localhost:8081/pixabay', { imgSrc });
+      }
     });
 
+    // Handle weather
     getData(
       `http://api.geonames.org/postalCodeSearchJSON?placename=${locationQuery}&username=snowi`
     ).then((data) => {
@@ -37,7 +47,6 @@ function handleSubmit(event) {
       const longitude = data.postalCodes[0].lng;
 
       if (!daysLeft) {
-        console.log('date === today');
         getData(
           `https://api.weatherbit.io/v2.0/current?lat=${latitude}&lon=${longitude}&key=349f7b9de5b24fb281f638662d60eeb8`
         ).then((data) => {
@@ -52,7 +61,6 @@ function handleSubmit(event) {
           });
         });
       } else {
-        console.log('date !== today');
         getData(
           `https://api.weatherbit.io/v2.0/forecast/daily?lat=${latitude}&lon=${longitude}&key=349f7b9de5b24fb281f638662d60eeb8`
         ).then((data) => {
@@ -62,11 +70,9 @@ function handleSubmit(event) {
           let description;
 
           if (!dayData) {
-            console.log('too far');
             temperature = daysList[15].temp;
             description = daysList[15].weather.description;
           } else {
-            console.log('before 2 weeks');
             temperature = dayData.temp;
             description = dayData.weather.description;
           }
@@ -103,7 +109,6 @@ const getData = async (url) => {
 
   try {
     const data = await response.json();
-    console.log(data);
     return data;
   } catch (error) {
     console.log('Error: ', error);
