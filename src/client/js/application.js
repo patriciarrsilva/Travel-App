@@ -36,22 +36,54 @@ function handleSubmit(event) {
       const latitude = data.postalCodes[0].lat;
       const longitude = data.postalCodes[0].lng;
 
-      getData(
-        `https://api.weatherbit.io/v2.0/current?lat=${latitude}&lon=${longitude}&key=349f7b9de5b24fb281f638662d60eeb8`
-      ).then((data) => {
-        const temperature = data.data[0].temp;
-        const feel = data.data[0].app_temp;
-        const description = data.data[0].weather.description;
+      if (!daysLeft) {
+        console.log('date === today');
+        getData(
+          `https://api.weatherbit.io/v2.0/current?lat=${latitude}&lon=${longitude}&key=349f7b9de5b24fb281f638662d60eeb8`
+        ).then((data) => {
+          const temperature = data.data[0].temp;
+          const description = data.data[0].weather.description;
 
-        postData('http://localhost:8081/weatherbit', {
-          temperature,
-          feel,
-          description,
+          postData('http://localhost:8081/weatherbit', {
+            temperature,
+            description,
+          }).then(() => {
+            updateUI().then(() => {
+              getData('http://localhost:8081/clear');
+            });
+          });
         });
-      });
-    });
+      } else {
+        console.log('date !== today');
+        getData(
+          `https://api.weatherbit.io/v2.0/forecast/daily?lat=${latitude}&lon=${longitude}&key=349f7b9de5b24fb281f638662d60eeb8`
+        ).then((data) => {
+          const daysList = data.data;
+          const dayData = daysList.find((day) => day.valid_date === dateValue);
+          let temperature;
+          let description;
 
-    updateUI();
+          if (!dayData) {
+            console.log('too far');
+            temperature = daysList[15].temp;
+            description = daysList[15].weather.description;
+          } else {
+            console.log('before 2 weeks');
+            temperature = dayData.temp;
+            description = dayData.weather.description;
+          }
+
+          postData('http://localhost:8081/weatherbit', {
+            temperature,
+            description,
+          }).then(() => {
+            updateUI().then(() => {
+              getData('http://localhost:8081/clear');
+            });
+          });
+        });
+      }
+    });
   });
 }
 
@@ -75,6 +107,7 @@ const getData = async (url) => {
 
   try {
     const data = await response.json();
+    console.log(data);
     return data;
   } catch (error) {
     console.log('Error: ', error);
@@ -102,7 +135,7 @@ const updateUI = async () => {
         <p class="text-m">${allData.location} is ${allData.daysLeft} days away</p>
         <div class="weather-container">
           <p class="text-m">Typical weather for then is:</p>
-          <p class="text-s">Temperature - ${allData.temperature}, Feels like - ${allData.feel}</p>
+          <p class="text-s">Temperature - ${allData.temperature}</p>
           <p class="text-s">${allData.description}</p>
         </div>
       </div>

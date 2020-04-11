@@ -62,12 +62,10 @@ app.post('/base', function (req, res) {
 // POST weatherbit
 app.post('/weatherbit', function (req, res) {
   projectData.temperature = req.body.temperature;
-  projectData.feel = req.body.feel;
   projectData.description = req.body.description;
 
   res.send({
     temperature: projectData.temperature,
-    feel: projectData.feel,
     description: projectData.description,
   });
 });
@@ -79,7 +77,13 @@ app.post('/pixabay', function (req, res) {
   res.send({ imgSrc: projectData.imgSrc });
 });
 
-// GET
+// GET all
 app.get('/all', (req, res) => {
+  res.send(projectData);
+});
+
+// GET clear
+app.get('/clear', (req, res) => {
+  projectData = {};
   res.send(projectData);
 });
