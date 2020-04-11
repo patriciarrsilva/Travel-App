@@ -1,9 +1,3 @@
-$pink: pink;
-$white: white;
-$black: black;
-$grey: grey;
-$lightgrey: lightgrey;
-
 ::-webkit-datetime-edit-text,
 ::-webkit-datetime-edit-year-field,
 ::-webkit-datetime-edit-month-field,
@@ -13,39 +7,39 @@ $lightgrey: lightgrey;
 
 body {
   font-size: 62.5%;
-  padding: 2rem 0;
+  padding: $spacing-xl 0;
 }
 
 h1 {
-  font-size: 2.5rem;
+  font-size: $font-xl;
   margin: 0;
-  padding: 1rem;
+  padding: $spacing-m;
 }
 
 .text-l {
-  font-size: 1.5rem;
+  font-size: $font-l;
   font-weight: bold;
   margin: 0;
-  padding: 0.25rem 0;
+  padding: $spacing-xs 0;
 }
 
 .text-m {
-  font-size: 1.25rem;
+  font-size: $font-m;
   margin: 0;
-  padding: 0.25rem 0;
+  padding: $spacing-xs 0;
 }
 
 .text-s {
-  font-size: 1rem;
+  font-size: $font-s;
   margin: 0;
-  padding: 0.25rem 0;
+  padding: $spacing-xs 0;
 }
 
 .button-save {
   background-color: $white;
   border: 0.25rem solid $black;
   cursor: pointer;
-  margin: 1rem;
+  margin: $spacing-m;
   width: 8rem;
 
   &:hover {
@@ -55,7 +49,7 @@ h1 {
 
 article {
   background-color: $pink;
-  padding: 1rem 0;
+  padding: $spacing-m 0;
 
   .image-container {
     position: relative;
@@ -63,14 +57,14 @@ article {
     img {
       height: 100%;
       width: 100%;
-      padding: 1rem 0;
+      padding: $spacing-m 0;
     }
 
     a {
       background-color: $white;
       color: $black;
-      margin: 1rem;
-      padding: 0.25rem 0.5rem;
+      margin: $spacing-m;
+      padding: $spacing-xs $spacing-s;
       position: absolute;
       bottom: 0;
       left: 0;
@@ -83,17 +77,17 @@ article {
   }
 
   .card-content {
-    padding: 0 1rem;
+    padding: 0 $spacing-m;
   }
 
   .weather-container {
-    padding: 1rem 0;
+    padding: $spacing-m 0;
   }
 }
 
 form {
   background-color: $lightgrey;
-  padding: 2rem 0 1rem;
+  padding: $spacing-xl 0 $spacing-m;
   text-align: center;
 
   p {
@@ -104,15 +98,15 @@ form {
     background-color: transparent;
     border: none;
     border-bottom: 1px solid $white;
-    margin-left: 0.25rem;
+    margin-left: $spacing-xs;
 
     &[type='text'] {
-      padding: 0.25rem;
+      padding: $spacing-xs;
       width: 11.5rem;
     }
 
     &[type='date'] {
-      padding: 0.25rem 0.25rem 0 0.25rem;
+      padding: $spacing-xs $spacing-xs 0 $spacing-xs;
       width: 15rem;
     }
   }
@@ -129,7 +123,7 @@ form {
     }
 
     img {
-      padding: 0 1rem;
+      padding: 0 $spacing-m;
       width: 0;
     }
   }
