@@ -73,10 +73,29 @@ article {
   background-color: $pink;
   padding: 1rem 0;
 
-  img {
-    height: 100%;
-    width: 100%;
-    padding: 1rem 0;
+  .image-container {
+    position: relative;
+
+    img {
+      height: 100%;
+      width: 100%;
+      padding: 1rem 0;
+    }
+
+    a {
+      background-color: $white;
+      color: $black;
+      margin: 1rem;
+      padding: 0.25rem 0.5rem;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      text-decoration: none;
+
+      &:hover {
+        font-weight: bold;
+      }
+    }
   }
 
   .card-content {

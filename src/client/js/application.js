@@ -124,7 +124,17 @@ const updateUI = async () => {
 
     const template = `
     <article>
-      <img id="image" src="${allData.imgSrc}"/>
+      <div class="image-container">
+        <img src="${allData.imgSrc}"/>
+        <a
+          class="text-s"
+          href="https://pixabay.com/"
+          target="_blank"
+          rel="noopener"
+        >
+          Pixabay - Free Images
+        </a>
+      </div>
       <div class="card-content">
         <p class="text-l">My trip to: ${allData.location}</p>
         <p class="text-l">Departing: ${allData.dateValue}</p>
