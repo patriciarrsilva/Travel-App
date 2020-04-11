@@ -126,7 +126,7 @@ const updateUI = async () => {
     const template = `
     <article>
       <div class="image-container">
-        <img src="${allData.imgSrc}"/>
+        <img src="${allData.imgSrc}" alt="image of the trip destination"/>
         <a
           class="text-s"
           href="https://pixabay.com/"
@@ -139,10 +139,6 @@ const updateUI = async () => {
       <div class="card-content">
         <p class="text-l">My trip to: ${allData.location}</p>
         <p class="text-l">Departing: ${allData.dateValue}</p>
-        <div class="buttons-container">
-          <button class="text-m button-save">save trip</button>
-          <button class="text-m button-remove">remove trip</button>
-        </div>
         <p class="text-m">${allData.location} is ${allData.daysLeft} days away</p>
         <div class="weather-container">
           <p class="text-m">Typical weather for then is:</p>

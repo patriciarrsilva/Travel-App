@@ -41,27 +41,12 @@ h1 {
   padding: 0.25rem 0;
 }
 
-.buttons-container {
-  // display: flex;
-  padding: 1rem 0;
-}
-
-button {
+.button-save {
+  background-color: $white;
+  border: 0.25rem solid $black;
   cursor: pointer;
-  // flex: 0 0 8rem;
+  margin: 1rem;
   width: 8rem;
-
-  &.button-save {
-    background-color: $white;
-    border: 0.25rem solid $black;
-    margin-right: 1rem;
-  }
-
-  &.button-remove {
-    background-color: transparent;
-    border: 0.25rem solid $white;
-    color: $grey;
-  }
 
   &:hover {
     font-weight: bold;
