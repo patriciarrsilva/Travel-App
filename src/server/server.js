@@ -48,6 +48,7 @@ projectData = {};
 
 // POST base
 app.post('/base', function (req, res) {
+  projectData = {};
   projectData.location = req.body.location;
   projectData.dateValue = req.body.dateValue;
   projectData.daysLeft = req.body.daysLeft;
@@ -79,11 +80,5 @@ app.post('/pixabay', function (req, res) {
 
 // GET all
 app.get('/all', (req, res) => {
-  res.send(projectData);
-});
-
-// GET clear
-app.get('/clear', (req, res) => {
-  projectData = {};
   res.send(projectData);
 });

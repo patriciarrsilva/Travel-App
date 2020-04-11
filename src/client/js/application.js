@@ -7,7 +7,7 @@ function handleSubmit(event) {
   const today = new Date();
   const daysLeft = Math.round((date - today) / (24 * 60 * 60 * 1000));
 
-  if (!location || !dateValue) {
+  if (!location || !dateValue || daysLeft < 0) {
     alert('Please, fill both fields with valid information');
     return;
   }
@@ -48,9 +48,7 @@ function handleSubmit(event) {
             temperature,
             description,
           }).then(() => {
-            updateUI().then(() => {
-              getData('http://localhost:8081/clear');
-            });
+            updateUI();
           });
         });
       } else {
@@ -77,9 +75,7 @@ function handleSubmit(event) {
             temperature,
             description,
           }).then(() => {
-            updateUI().then(() => {
-              getData('http://localhost:8081/clear');
-            });
+            updateUI();
           });
         });
       }
