@@ -7,7 +7,7 @@ function handleSubmit(event) {
   const today = new Date();
   const daysLeft = Math.round((date - today) / (24 * 60 * 60 * 1000));
 
-  if (!location || !dateValue || daysLeft < 0) {
+  if (!location || !dateValue || date - today < 0) {
     alert('Please, fill both fields with valid information');
     return;
   }

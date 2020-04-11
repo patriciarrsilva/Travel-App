@@ -1,19 +1,7 @@
-const dotenv = require('dotenv');
-dotenv.config();
-// geonames_username: process.env.GEONAMES_USERNAME
-// weatherbit_key: process.env.WEATHERBIT_API_KEY
-// pixabay_key: process.env.PIXABAY_API_KEY
 var path = require('path');
 const express = require('express');
-const mockAPIResponse = require('./mockAPI.js');
 var bodyParser = require('body-parser');
 var cors = require('cors');
-
-var json = {
-  title: 'test json response',
-  message: 'this is a message',
-  time: 'now',
-};
 
 const app = express();
 app.use(cors());
@@ -28,8 +16,6 @@ app.use(
 
 app.use(express.static('dist'));
 
-console.log(JSON.stringify(mockAPIResponse));
-
 app.get('/', function (req, res) {
   res.sendFile('dist/index.html');
 });
@@ -38,9 +24,11 @@ app.get('/test', function (req, res) {
   res.json(mockAPIResponse);
 });
 
+const port = 8081;
+
 // designates what port the app will listen to for incoming requests
-app.listen(8081, function () {
-  console.log('Example app listening on port 8081!');
+app.listen(port, function () {
+  console.log(`Example app listening on port ${port}!`);
 });
 
 // Setup empty JS object to act as endpoint for all routes
