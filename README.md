@@ -21,6 +21,8 @@ Then, the page will show an image and the weather of the location entered.
 
 - [Express](https://expressjs.com/)
 - [Webpack](https://webpack.js.org/)
+- [Jest](https://jestjs.io/)
+- [SuperTest](https://github.com/visionmedia/supertest)
 
 ## Webpack Loaders
 
