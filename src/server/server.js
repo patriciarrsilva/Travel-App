@@ -20,10 +20,6 @@ app.get('/', function (req, res) {
   res.sendFile('dist/index.html');
 });
 
-app.get('/test', function (req, res) {
-  res.json(mockAPIResponse);
-});
-
 const port = 8081;
 
 // designates what port the app will listen to for incoming requests
@@ -32,10 +28,11 @@ app.listen(port, function () {
 });
 
 // Setup empty JS object to act as endpoint for all routes
-projectData = {};
+let projectData = {};
 
 // POST base
-app.post('/base', function (req, res) {
+app.post('/base', postBase);
+function postBase(req, res) {
   projectData = {};
   projectData.location = req.body.location;
   projectData.dateValue = req.body.dateValue;
@@ -46,10 +43,11 @@ app.post('/base', function (req, res) {
     dateValue: projectData.dateValue,
     daysLeft: projectData.daysLeft,
   });
-});
+}
 
 // POST weatherbit
-app.post('/weatherbit', function (req, res) {
+app.post('/weatherbit', postWeatherbit);
+function postWeatherbit(req, res) {
   projectData.temperature = req.body.temperature;
   projectData.description = req.body.description;
 
@@ -57,16 +55,21 @@ app.post('/weatherbit', function (req, res) {
     temperature: projectData.temperature,
     description: projectData.description,
   });
-});
+}
 
 // POST pixabay
-app.post('/pixabay', function (req, res) {
+app.post('/pixabay', postPixabay);
+function postPixabay(req, res) {
   projectData.imgSrc = req.body.imgSrc;
 
   res.send({ imgSrc: projectData.imgSrc });
-});
+}
 
 // GET all
-app.get('/all', (req, res) => {
+app.get('/all', getAll);
+function getAll(req, res) {
   res.send(projectData);
-});
+}
+
+// module.exports = getAll;
+module.exports = app;

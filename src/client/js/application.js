@@ -5,7 +5,7 @@ function handleSubmit(event) {
   const dateValue = document.getElementById('date').value;
   const date = new Date(document.getElementById('date').value);
   const today = new Date();
-  const daysLeft = Math.round((date - today) / (24 * 60 * 60 * 1000));
+  const daysLeft = Math.ceil((date - today) / (24 * 60 * 60 * 1000));
 
   if (!location || !dateValue || date - today < 0) {
     alert('Please, fill both fields with valid information');
@@ -139,7 +139,7 @@ const updateUI = async () => {
       <div class="card-content">
         <p class="text-l">My trip to: ${allData.location}</p>
         <p class="text-l">Departing: ${allData.dateValue}</p>
-        <p class="text-m">${allData.location} is ${allData.daysLeft} days away</p>
+        <p class="text-m">${allData.location} is ${allData.daysLeft} day(s) away</p>
         <div class="weather-container">
           <p class="text-m">Typical weather for then is:</p>
           <p class="text-s">Temperature - ${allData.temperature}</p>
